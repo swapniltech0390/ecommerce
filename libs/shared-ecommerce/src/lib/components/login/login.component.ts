@@ -12,7 +12,7 @@ export class LoginComponent {
 
   @Output() userLoginDetails: EventEmitter<User> = new EventEmitter();
   loginForm = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
+    username: ['', [Validators.required]],
     password: ['', Validators.required]
   });
 
@@ -20,11 +20,11 @@ export class LoginComponent {
     this.userLoginDetails.emit(this.loginForm.getRawValue() as User);
   }
 
-  isEmailValid(): boolean {
+  isUsernameValid(): boolean {
     return (
-      this.loginForm.controls['email'].invalid &&
-      (this.loginForm.controls['email'].dirty ||
-        this.loginForm.controls['email'].touched)
+      this.loginForm.controls['username'].invalid &&
+      (this.loginForm.controls['username'].dirty ||
+        this.loginForm.controls['username'].touched)
     );
   }
 
