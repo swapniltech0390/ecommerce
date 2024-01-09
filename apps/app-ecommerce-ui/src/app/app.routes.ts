@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
+import { HomeComponent } from '@ecommerce/feature-home-lib';
 
 export const appRoutes: Route[] = [
   {
     path: '',
-    loadChildren: () =>
-      import('@ecommerce/feature-home-lib').then((m) => m.EcommerceFeatureHomeLibModule)
+    component: HomeComponent
   },
   {
     path: '**',

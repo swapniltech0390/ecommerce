@@ -30,9 +30,7 @@ const reducer = createReducer(
   })),
   on(UsersActions.loginUserFailure, (state, { error }) => ({
     ...state,
-    error,
-    token: '',
-    isLoggedIn: false
+    error
   })),
   on(UsersActions.logOutUser, (state) => ({
     ...state,

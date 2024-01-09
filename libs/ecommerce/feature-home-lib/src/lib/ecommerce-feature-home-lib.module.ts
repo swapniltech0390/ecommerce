@@ -11,17 +11,18 @@ import * as fromUsers from './+state/users.reducer';
 import { UsersEffects } from './+state/users.effects';
 import { UsersFacade } from './+state/users.facade';
 import { LoginComponent } from './components/login/login.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
   imports: [
-    RouterModule.forChild(ecommerceFeatureHomeLibRoutes),
+    RouterModule.forRoot(ecommerceFeatureHomeLibRoutes),
     SharedEcommerceModule,
     HttpClientModule,
     StoreModule.forFeature(fromUsers.USERS_FEATURE_KEY, fromUsers.usersReducer),
     EffectsModule.forFeature([UsersEffects]),
   ],
   providers: [UserService, UsersFacade],
-  declarations: [HomeComponent, LoginComponent],
-  exports: [HomeComponent],
+  declarations: [HomeComponent, LoginComponent, LandingPageComponent],
+  exports: [LandingPageComponent],
 })
 export class EcommerceFeatureHomeLibModule {}
