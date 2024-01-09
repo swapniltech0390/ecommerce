@@ -17,3 +17,8 @@ export const loginUserFailure = createAction(
   '[Users/API] Login Users Failure',
   props<{ error: any }>()
 );
+
+export const logOutUser = createAction(
+  '[Users/API] Logout User'
+);
+

@@ -12,6 +12,7 @@ export class UsersFacade {
    * and expose them as observables through the facade.
    */
   loaded$ = this.store.pipe(select(UsersSelectors.selectUsersLoaded));
+  isLoggedIn$ = this.store.pipe(select(UsersSelectors.isLoggedIn));
 
   /**
    * Use the initialization action to perform one
