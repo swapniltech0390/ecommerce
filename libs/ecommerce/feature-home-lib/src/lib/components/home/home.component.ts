@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from '@ecommerce/shared-ecommerce';
-import { UserService } from '../../services/user/user.service';
+
 
 @Component({
   selector: 'ecommerce-home',
@@ -8,8 +7,5 @@ import { UserService } from '../../services/user/user.service';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  constructor(private userService: UserService) {}
-  login(user: User) {
-    this.userService.login(user);
-  }
+
 }

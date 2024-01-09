@@ -1,21 +1,27 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ecommerceFeatureHomeLibRoutes } from './lib.routes';
 import { HomeComponent } from './components/home/home.component';
 import { SharedEcommerceModule } from '@ecommerce/shared-ecommerce';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user/user.service';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import * as fromUsers from './+state/users.reducer';
+import { UsersEffects } from './+state/users.effects';
+import { UsersFacade } from './+state/users.facade';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   imports: [
-    CommonModule,
     RouterModule.forChild(ecommerceFeatureHomeLibRoutes),
     SharedEcommerceModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forFeature(fromUsers.USERS_FEATURE_KEY, fromUsers.usersReducer),
+    EffectsModule.forFeature([UsersEffects]),
   ],
-  providers: [UserService],
-  declarations: [HomeComponent],
-  exports: [HomeComponent]
+  providers: [UserService, UsersFacade],
+  declarations: [HomeComponent, LoginComponent],
+  exports: [HomeComponent],
 })
 export class EcommerceFeatureHomeLibModule {}
