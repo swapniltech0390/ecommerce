@@ -12,9 +12,12 @@ import { UsersEffects } from './+state/users.effects';
 import { UsersFacade } from './+state/users.facade';
 import { LoginComponent } from './components/login/login.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { CommonModule } from '@angular/common';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   imports: [
+    CommonModule,
     RouterModule.forRoot(ecommerceFeatureHomeLibRoutes),
     SharedEcommerceModule,
     HttpClientModule,
@@ -22,7 +25,12 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     EffectsModule.forFeature([UsersEffects]),
   ],
   providers: [UserService, UsersFacade],
-  declarations: [HomeComponent, LoginComponent, LandingPageComponent],
+  declarations: [
+    HomeComponent,
+    LoginComponent,
+    LandingPageComponent,
+    LogoutComponent,
+  ],
   exports: [LandingPageComponent],
 })
 export class EcommerceFeatureHomeLibModule {}
