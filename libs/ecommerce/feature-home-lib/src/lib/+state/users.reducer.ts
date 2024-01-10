@@ -1,5 +1,6 @@
 import { createReducer, on, Action } from '@ngrx/store';
 import * as UsersActions from './users.actions';
+import { UserDetails } from '../models/users';
 export const USERS_FEATURE_KEY = 'users';
 
 export interface UsersState {
@@ -7,6 +8,7 @@ export interface UsersState {
   error?: string | null; // last known error (if any)
   isLoggedIn: boolean;
   token: string;
+  userDetails: UserDetails;
 }
 
 export interface UsersPartialState {
@@ -15,13 +17,42 @@ export interface UsersPartialState {
 
 export const initialUsersState: UsersState = {
   // set initial required properties
-  loaded: false,
+  loaded: true,
   isLoggedIn: false,
-  token: ''
+  token: '',
+  userDetails:{
+    id: 0,
+    email: '',
+    username: '',
+    password: '',
+    name: {
+      firstname: '',
+      lastname: ''
+    },
+    address:{
+      city: '',
+      street: '',
+      number: 0,
+      zipcode: '',
+      geolocation: {
+        lat: '',
+        long: ''
+      }
+    },
+    phone: ''
+  }
 };
 
 const reducer = createReducer(
   initialUsersState,
+   on(UsersActions.loading, (state, { loaded }) => ({
+    ...state,
+    loaded
+  })),
+  on(UsersActions.loaded, (state, {loaded }) => ({
+    ...state,
+    loaded
+  })),
   on(UsersActions.loginUserSuccess, (state, { token }) => ({
     ...state,
     token,
@@ -36,7 +67,17 @@ const reducer = createReducer(
     ...state,
     token: '',
     isLoggedIn: false
-  }))
+  })),
+  on(UsersActions.GetUserDetailsSuccess, (state, { userDetails }) => ({
+    ...state,
+    userDetails,
+    error: '',
+    isLoggedIn: true
+  })),
+  on(UsersActions.GetUserDetailsFailure, (state, { error }) => ({
+    ...state,
+    error
+  })),
 );
 
 export function usersReducer(state: UsersState | undefined, action: Action) {

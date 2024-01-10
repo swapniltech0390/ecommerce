@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '@ecommerce/shared-ecommerce';
 import { Observable } from 'rxjs';
-import { LoginResponse } from '../../models/users';
+import { LoginResponse, UserDetails } from '../../models/users';
 
 @Injectable()
 export class UserService {
@@ -10,6 +10,10 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   login(user: User): Observable<LoginResponse> {
-   return this.http.post<LoginResponse>(`${this.baseUrl}auth/login`, user);
+    return this.http.post<LoginResponse>(`${this.baseUrl}auth/login`, user);
+  }
+
+  getUserDetails(id: number): Observable<UserDetails> {
+    return this.http.get<UserDetails>(`${this.baseUrl}users/${id}`);
   }
 }
