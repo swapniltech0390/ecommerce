@@ -1,5 +1,5 @@
 import { AfterContentInit, Component } from '@angular/core';
-import { logOutUser } from '../../+state/users.actions';
+import { logOutUser } from '../../+state/actions/users.actions';
 import { Store } from '@ngrx/store';
 
 @Component({

@@ -1,7 +1,7 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import * as UsersActions from './users.actions';
-import { UserDetails } from '../models/users';
-export const USERS_FEATURE_KEY = 'users';
+import * as UsersActions from '../../actions/users.actions';
+import { UserDetails } from '../../../models/users';
+
 
 export interface UsersState {
   loaded: boolean; // has the Users list been loaded
@@ -9,10 +9,6 @@ export interface UsersState {
   isLoggedIn: boolean;
   token: string;
   userDetails: UserDetails;
-}
-
-export interface UsersPartialState {
-  readonly [USERS_FEATURE_KEY]: UsersState;
 }
 
 export const initialUsersState: UsersState = {

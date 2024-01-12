@@ -6,14 +6,14 @@ import { LoginResponse, UserDetails } from '../../models/users';
 
 @Injectable()
 export class UserService {
-  baseUrl = 'https://fakestoreapi.com/';
+  baseUrl = 'https://fakestoreapi.com';
   constructor(private http: HttpClient) {}
 
   login(user: User): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.baseUrl}auth/login`, user);
+    return this.http.post<LoginResponse>(`${this.baseUrl}/auth/login`, user);
   }
 
   getUserDetails(id: number): Observable<UserDetails> {
-    return this.http.get<UserDetails>(`${this.baseUrl}users/${id}`);
+    return this.http.get<UserDetails>(`${this.baseUrl}/users/${id}`);
   }
 }

@@ -5,7 +5,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs';
 
-import * as UsersActions from './users.actions';
+import * as UsersActions from '../../actions/users.actions';
 import { UsersEffects } from './users.effects';
 
 describe('UsersEffects', () => {

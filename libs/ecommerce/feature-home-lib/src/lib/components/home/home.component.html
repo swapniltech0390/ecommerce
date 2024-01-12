@@ -1,1 +1,9 @@
-<h1>User logged In</h1>
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 gx-4 gy-4 m-2 card-group">
+    @for (product of products; track product.id) {
+    <div class="col">
+        <ecommerce-product-card [product]="product"></ecommerce-product-card>
+    </div>
+    } @empty {
+    Empty list of products
+    }
+</div>

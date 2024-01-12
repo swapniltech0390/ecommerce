@@ -1,9 +1,9 @@
-import { UsersEntity } from './users.models';
+import { UsersEntity } from '../models/users/users.models';
 import {
   usersAdapter,
   UsersPartialState,
   initialUsersState,
-} from './users.reducer';
+} from '../../reducers/users/users.reducer';
 import * as UsersSelectors from './users.selectors';
 
 describe('Users Selectors', () => {

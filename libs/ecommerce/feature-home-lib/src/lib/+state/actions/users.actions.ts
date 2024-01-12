@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { User } from '@ecommerce/shared-ecommerce';
-import { LoginResponse, UserDetails } from '../models/users';
+import { LoginResponse, UserDetails } from '../../models/users';
 
 export const loading = createAction(
   '[Users/API] Data loading',

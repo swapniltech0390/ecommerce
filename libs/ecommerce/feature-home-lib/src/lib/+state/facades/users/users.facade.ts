@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
-import * as UsersSelectors from './users.selectors';
+import * as UsersSelectors from '../../selectors/users/users.selectors';
 
 @Injectable()
 export class UsersFacade {
@@ -12,12 +12,6 @@ export class UsersFacade {
    * and expose them as observables through the facade.
    */
   loaded$ = this.store.pipe(select(UsersSelectors.selectUsersLoaded));
-  isLoggedIn$ = this.store.pipe(select(UsersSelectors.isLoggedIn));
-
-  /**
-   * Use the initialization action to perform one
-   * or more tasks in your Effects.
-   */
-  init() {
-  }
+  isLoggedIn$ = this.store.pipe(select(UsersSelectors.selectUserisLoggedIn));
+  userDetails$ = this.store.pipe(select(UsersSelectors.selectUserDetails));
 }

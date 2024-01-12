@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '@ecommerce/shared-ecommerce';
 import { Store } from '@ngrx/store';
-import { loginUser } from '../../+state/users.actions';
+import { loginUser } from '../../+state/actions/users.actions';
 
 @Component({
   selector: 'ecommerce-login',

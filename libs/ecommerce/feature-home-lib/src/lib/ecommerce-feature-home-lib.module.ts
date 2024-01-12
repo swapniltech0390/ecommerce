@@ -7,13 +7,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user/user.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromUsers from './+state/users.reducer';
-import { UsersEffects } from './+state/users.effects';
-import { UsersFacade } from './+state/users.facade';
+import { UsersEffects } from './+state/effects/users/users.effects';
 import { LoginComponent } from './components/login/login.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { CommonModule } from '@angular/common';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ProductsEffects } from './+state/effects/products/products.effects';
+import { USERS_FEATURE_KEY, reducers } from './+state/reducers';
+import { UsersFacade } from './+state/facades/users/users.facade';
+import { ProductCardComponent } from './components/products/product-card/product-card.component';
+import { ProductsFacadeService } from './+state/facades/products/products.facade.service';
 
 @NgModule({
   imports: [
@@ -21,15 +24,16 @@ import { LogoutComponent } from './components/logout/logout.component';
     RouterModule.forRoot(ecommerceFeatureHomeLibRoutes),
     SharedEcommerceModule,
     HttpClientModule,
-    StoreModule.forFeature(fromUsers.USERS_FEATURE_KEY, fromUsers.usersReducer),
-    EffectsModule.forFeature([UsersEffects]),
+    StoreModule.forFeature(USERS_FEATURE_KEY, reducers),
+    EffectsModule.forFeature([UsersEffects, ProductsEffects]),
   ],
-  providers: [UserService, UsersFacade],
+  providers: [UserService, UsersFacade,ProductsFacadeService],
   declarations: [
     HomeComponent,
     LoginComponent,
     LandingPageComponent,
     LogoutComponent,
+    ProductCardComponent,
   ],
   exports: [LandingPageComponent],
 })

@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn } from '@angular/router';
-import { UsersFacade } from '../../+state/users.facade';
+import { UsersFacade } from '../../+state/facades/users/users.facade';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 
